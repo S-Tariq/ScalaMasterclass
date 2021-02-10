@@ -1,5 +1,5 @@
 package stariq
 
-class Main {
+object Main {
 
 }
