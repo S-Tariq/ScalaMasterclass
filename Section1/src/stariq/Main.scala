@@ -1,0 +1,5 @@
+package stariq
+
+class Main {
+
+}
