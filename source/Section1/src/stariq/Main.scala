@@ -1,5 +1,0 @@
-package stariq
-
-object Main {
-
-}
