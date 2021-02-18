@@ -40,16 +40,16 @@ object Functions extends App {
   println(greeting("Tim", 12))
 
   def factorial(n : Int): Int = {
-    if(n == 1) n
+    if(n <= 0) 1
     else n * factorial(n-1)
   }
-  println(factorial(5))
+  println(factorial(5)) // 120
 
   def fibonacci(n: Int): Int = {
-    if(n == 1 || n == 2) 1
+    if(n <= 2) 1
     else fibonacci(n - 1) + fibonacci(n - 2)
   }
-  println(fibonacci(8))
+  println(fibonacci(8)) // 21
 
   def isPrime(n: Int): Boolean = {
     def isPrimeUntil(t: Int): Boolean = {
@@ -58,15 +58,15 @@ object Functions extends App {
     }
     isPrimeUntil(n / 2)
   }
-  println(isPrime(37)) // Prime
-  println(isPrime(2003)) // Prime
-  println(isPrime(37 * 17)) // Not prime
+  println(isPrime(37)) // true
+  println(isPrime(2003)) // true
+  println(isPrime(37 * 17)) // false
 
   // Another way of solving:
   def isPrime2(n: Int): Boolean = {
     Range(2,n) forall(x => n % x != 0)
   }
-  println(isPrime2(37)) // Prime
-  println(isPrime2(2003)) // Prime
-  println(isPrime2(37 * 17)) // Not prime
+  println(isPrime2(37)) // true
+  println(isPrime2(2003)) // true
+  println(isPrime2(37 * 17)) // false
 }

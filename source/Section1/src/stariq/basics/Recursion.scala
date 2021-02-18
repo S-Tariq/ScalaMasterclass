@@ -55,41 +55,37 @@ object Recursion extends App {
     3. Fibonacci function tail recursive
    */
 
-  def concat(s: String, n: Int): String = {
-    @tailrec
-    def concatHelper(s: String, n: Int, accumulator: String): String = {
-      if(n == 1) accumulator
-      else concatHelper(s, n - 1, s + accumulator)
-    }
-    concatHelper(s, n, s)
+
+  @tailrec
+  def concat(s: String, n: Int, accumulator: String): String = {
+    if (n <= 0) accumulator
+    else concat(s, n - 1, s + accumulator)
   }
-  println(concat("a",3))
+  println(concat("a", 3, "")) // aaa
+
 
   def isPrime(n: Int): Boolean = {
-    def isPrimeUntil(t: Int): Boolean = {
-      @tailrec
-      def primeHelper(t: Int, accumulator: Boolean): Boolean = {
-        if(t <= 1) accumulator
-        else primeHelper(t - 1, n % t != 0 && accumulator)
-      }
-      primeHelper(t, true)
+    @tailrec
+    def primeHelper(t: Int, accumulator: Boolean): Boolean = {
+      if(!accumulator) false
+      else if (t <= 1) true
+      else primeHelper(t - 1, n % t != 0 && accumulator)
     }
-    isPrimeUntil(n / 2)
+    primeHelper(n / 2, true)
   }
-  println(isPrime(37)) // Prime
-  println(isPrime(2003)) // Prime
-  println(isPrime(37 * 17)) // Not prime
+  println(isPrime(37)) // true
+  println(isPrime(37 * 17)) // false
 
   def fibonacci(n: Int): Int = {
     @tailrec
-    def fibHelper(i: Int, accumulator1: Int, accumulator2: Int): Int = {
-      if(i >= n) accumulator1
-      else fibHelper(i + 1, accumulator1 + accumulator2, accumulator1)
+    def fibHelper(i: Int, last: Int, secondLast: Int): Int = {
+      if(i >= n) last
+      else fibHelper(i + 1, last + secondLast, last)
     }
-    if(n == 1 || n == 2) 1
+    if(n <= 2) 1
     else fibHelper(2, 1, 1)
   }
-  println(fibonacci(8))
+  println(fibonacci(8)) // 21
 
 
 }
