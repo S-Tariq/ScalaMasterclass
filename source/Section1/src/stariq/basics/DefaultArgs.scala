@@ -12,5 +12,14 @@ object DefaultArgs extends App {
   // This can be defined at parameter level.
   val fact10 = factorial(10)
 
-  def savePicture(format: String, width: Int, height: Int): Unit = print("Saving picture")
+  def savePicture(format: String = "jpeg", width: Int = 1920, height: Int = 1080): Unit = print("Saving picture")
+  savePicture(width = 800)
+
+  // Pass in every leading argument
+  // Name the arguments
+
+  savePicture(height = 600, width = 800, format = "bmp")
+
+
+
 }
